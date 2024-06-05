@@ -40,4 +40,13 @@ export class RequestDetailComponent implements OnInit {
     );
   }
 
+  backToNew() : void {
+    this.requestService.backToNewRequest(this.request)
+    .subscribe((newRequest) => {
+      this.request = newRequest
+      this.previousState();
+    }
+  );
+  }
+
 }

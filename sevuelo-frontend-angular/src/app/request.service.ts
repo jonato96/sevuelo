@@ -36,4 +36,8 @@ export class RequestService {
     return this.http.post<Request>(`${this.url}/requests`, request, this.httpOptions);
   }
 
+  backToNewRequest(request: Request): Observable<any> {
+    return this.http.put(`${this.url}/backToNew`, request, this.httpOptions);
+  }
+
 }

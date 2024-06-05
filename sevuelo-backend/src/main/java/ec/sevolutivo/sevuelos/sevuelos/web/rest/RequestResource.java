@@ -53,5 +53,12 @@ public class RequestResource {
         requestRepository.save(request);
     }
 
+    @PutMapping("/backToNew")
+    public void setToNew(@RequestBody Request request) {
+        log.debug("REST request to back to new a flight");
+        request.setStatus(RequestStatus.NEW);
+        requestRepository.save(request);
+    }
+
 
 }

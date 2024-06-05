@@ -18,6 +18,13 @@
           </label>
         </div>
         <div>
+          <label>Comments:
+            <span>
+                {{request.comments}}
+            </span>
+          </label>
+        </div>
+        <div>
             <label>Status:
               <span>
                   {{request.status}}
@@ -30,6 +37,9 @@
           <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
         </button>
         <button (click)="reserve()" class="btn btn-success">Reserve</button>
+        <button *ngIf="request.status === 'RESERVED'" (click)="backToNew()" class="btn btn-success">
+          Back to NEW
+        </button>
     </div>
   </div>
 </div>

@@ -36,6 +36,9 @@ public class Request implements Serializable {
     @Column(name = "status", nullable = false)
     private RequestStatus status;
 
+    @Column(name = "comments", nullable = true)
+    private String comments;
+
     public Long getId() {
         return id;
     }
@@ -66,6 +69,14 @@ public class Request implements Serializable {
 
     public void setStatus(RequestStatus status) {
         this.status = status;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
 

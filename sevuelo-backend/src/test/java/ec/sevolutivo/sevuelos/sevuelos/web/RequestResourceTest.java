@@ -103,6 +103,18 @@ public class RequestResourceTest {
                         .content(objectMapper.writeValueAsString(completeRequest)))
                         .andExpect(status().isOk());
         Optional<Request> requestFromDataBaseAfterUpdate = requestRepository.findById(completeRequest.getId());
+        assertEquals(RequestStatus.RESERVED, requestFromDataBaseAfterUpdate.get().getStatus() );
+    }
+
+    @Test
+    public void shouldChangeStatusToNew() throws Exception {
+
+        completeRequest.setStatus(RequestStatus.RESERVED);
+        mockMvc.perform(put("/api/backToNew")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(completeRequest)))
+                .andExpect(status().isOk());
+        Optional<Request> requestFromDataBaseAfterUpdate = requestRepository.findById(completeRequest.getId());
         assertEquals(RequestStatus.NEW, requestFromDataBaseAfterUpdate.get().getStatus() );
     }
 
